@@ -46,6 +46,10 @@ class Album extends Component {
 		}
 	}
 
+	mouseHover() {
+		document.getElementById("ion-play")
+	}
+
 	render() {
 
 		return(
@@ -71,7 +75,7 @@ class Album extends Component {
 		   					return(
 		   					<tr className="song" key={index} onClick={ () => this.handleSongClick(songs) }>
 		   						<td>{index+1}.</td>
-		   						<td>{this.state.album.songs[index].title}</td>
+		   						<td><span className="ion-play" onMouseEnter={ () => this.mouseHover() }>{this.state.album.songs[index].title}</span></td>
 		   						<td>{this.state.album.songs[index].duration} seconds</td>
 		   					</tr>	
 
