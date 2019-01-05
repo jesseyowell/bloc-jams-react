@@ -13,7 +13,8 @@ class Album extends Component {
 		this.state = {
 			album: album,
 			currentSong: album.songs[0],
-			isPlaying: false
+			isPlaying: false,
+			isMouseOver: false,
 		};
 
 		this.audioElement = document.createElement('audio');
@@ -46,8 +47,12 @@ class Album extends Component {
 		}
 	}
 
-	mouseHover() {
-		document.getElementById("ion-play")
+	mouseEnter() {
+		this.setState({ isMouseOver: true });
+	}
+
+	mouseLeave() {
+		this.setState({ isMouseOver: false });
 	}
 
 	render() {
@@ -69,20 +74,23 @@ class Album extends Component {
 		   				<col id="song-duration-column" />
 		   			</colgroup>
 		   			<tbody>
-		   				{
-		   				
+		   			{
 		   				this.state.album.songs.map( (songs,index) => {
 		   					return(
-		   					<tr className="song" key={index} onClick={ () => this.handleSongClick(songs) }>
-		   						<td>{index+1}.</td>
-		   						<td><span className="ion-play" onMouseEnter={ () => this.mouseHover() }>{this.state.album.songs[index].title}</span></td>
+		   					<tr className="song" key={index} onClick={ () => this.handleSongClick(songs) } >
+		   						<td>{index+1}.</td> 
+		   						<td> 
+		   						<div onMouseEnter={ () => this.mouseEnter() } onMouseLeave={ () => this.mouseLeave() }>
+		   						{ this.state.isMouseOver 
+		   							? <span className="icon ion-md-play"></span> 
+		   							: null }
+		   							{this.state.album.songs[index].title}</div></td> 
 		   						<td>{this.state.album.songs[index].duration} seconds</td>
 		   					</tr>	
 
 		   					);
 		   				})
-
-		   			}
+		   			} 
 		   			</tbody>
 		   		</table>
 		   	</section>		
