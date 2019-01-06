@@ -42,7 +42,7 @@ class Album extends Component {
 		if(this.state.isPlaying && isSameSong) {
 			this.pause();
 		} else {
-			if(!isSameSong) { this.setSong(song); }
+			if(!isSameSong) { this.setSong(song) }
 			this.play();
 		}
 	}
@@ -55,8 +55,22 @@ class Album extends Component {
 		this.setState({ isMouseOver: false });
 	}
 
-	renderButton() {
+	renderButton(song, index) {
 
+		// check to see if the player isPlaying and if the currentSong is the song we're looking at
+		if (this.state.currentSong === song && this.state.isPlaying) {
+			// if it is, let's show a pause button
+			return <span className="icon ion-md-pause"></span>
+		} 
+			// if not, is the song being hovered over?
+		else if (this.state.isMouseOver && this.state.currentSong === song) {
+			// if so, let's display the play button
+			return <span className="icon ion-md-play"></span>
+		}
+		// if song isn't being played or hovered over, let's display the track number
+		else { 
+			return (index + 1 + ".")
+		}
 	}
 
 	render() {
@@ -82,7 +96,7 @@ class Album extends Component {
 		   				this.state.album.songs.map( (song,index) => {
 		   					return(
 		   					<tr className="song" key={index} onClick={ () => this.handleSongClick(song) } >
-		   						<td onMouseEnter={ () => this.mouseEnter(song) } onMouseLeave={ () => this.mouseLeave() }>
+		   						<td onMouseEnter={ () => this.mouseEnter() } onMouseLeave={ () => this.mouseLeave() }>
 		   						{ this.renderButton(song,index) }</td>
 		   						<td>{this.state.album.songs[index].title}</td> 
 		   						<td>{this.state.album.songs[index].duration} seconds</td>
