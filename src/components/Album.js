@@ -48,14 +48,15 @@ class Album extends Component {
 	}
 
 	mouseEnter() {
-	
-        if(!this.state.isPlaying && this.state.currentSong) {
-			this.setState({ isMouseOver: true });
-		}
+		this.setState({ isMouseOver: true });
 	}
 
 	mouseLeave() {
 		this.setState({ isMouseOver: false });
+	}
+
+	renderButton() {
+
 	}
 
 	render() {
@@ -80,7 +81,7 @@ class Album extends Component {
 		   			{
 		   				this.state.album.songs.map( (song,index) => {
 		   					return(
-		   					<tr className="song" key={index} onClick={ () => this.handleSongClick(songs) } >
+		   					<tr className="song" key={index} onClick={ () => this.handleSongClick(song) } >
 		   						<td onMouseEnter={ () => this.mouseEnter(song) } onMouseLeave={ () => this.mouseLeave() }>
 		   						{ this.renderButton(song,index) }</td>
 		   						<td>{this.state.album.songs[index].title}</td> 
