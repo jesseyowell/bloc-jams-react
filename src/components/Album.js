@@ -56,7 +56,7 @@ class Album extends Component {
 	}
 
 	renderButton(song, index) {
-
+		
 		// check to see if the player isPlaying and if the currentSong is the song we're looking at
 		if (this.state.currentSong === song && this.state.isPlaying) {
 			// if it is, let's show a pause button
@@ -96,7 +96,7 @@ class Album extends Component {
 		   				this.state.album.songs.map( (song,index) => {
 		   					return(
 		   					<tr className="song" key={index} onClick={ () => this.handleSongClick(song) } >
-		   						<td onMouseEnter={ () => this.mouseEnter() } onMouseLeave={ () => this.mouseLeave() }>
+		   						<td onMouseEnter={ () => this.mouseEnter(song) } onMouseLeave={ () => this.mouseLeave() }>
 		   						{ this.renderButton(song,index) }</td>
 		   						<td>{this.state.album.songs[index].title}</td> 
 		   						<td>{this.state.album.songs[index].duration} seconds</td>
