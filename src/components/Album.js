@@ -78,17 +78,11 @@ class Album extends Component {
 		   			</colgroup>
 		   			<tbody>
 		   			{
-		   				this.state.album.songs.map( (songs,index) => {
+		   				this.state.album.songs.map( (song,index) => {
 		   					return(
 		   					<tr className="song" key={index} onClick={ () => this.handleSongClick(songs) } >
-		   						<td onMouseEnter={ () => this.mouseEnter() } onMouseLeave={ () => this.mouseLeave() }>
-		   						{ !this.state.isMouseOver 
-		   							? index+1
-		   							: <span className="icon ion-md-play"></span> }
-		   						{ !this.state.isMouseOver && this.state.currentSong.isPlaying
-		   							? index+1
-		   							: <span className="icon ion-md-pause"></span> }	
-		   							</td> 
+		   						<td onMouseEnter={ () => this.mouseEnter(song) } onMouseLeave={ () => this.mouseLeave() }>
+		   						{ this.renderButton(song,index) }</td>
 		   						<td>{this.state.album.songs[index].title}</td> 
 		   						<td>{this.state.album.songs[index].duration} seconds</td>
 		   					</tr>	
