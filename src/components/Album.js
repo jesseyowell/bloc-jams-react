@@ -48,7 +48,10 @@ class Album extends Component {
 	}
 
 	mouseEnter() {
-		this.setState({ isMouseOver: true });
+	
+        if(!this.state.isPlaying && this.state.currentSong) {
+			this.setState({ isMouseOver: true });
+		}
 	}
 
 	mouseLeave() {
@@ -79,13 +82,13 @@ class Album extends Component {
 		   					return(
 		   					<tr className="song" key={index} onClick={ () => this.handleSongClick(songs) } >
 		   						<td onMouseEnter={ () => this.mouseEnter() } onMouseLeave={ () => this.mouseLeave() }>
-		   						{ this.state.isMouseOver && !this.state.isPlaying 
-		   							? <span className="icon ion-md-play"></span> 
-		   							: null }
-		   						{ this.state.isPlaying && this.state.isMouseOver
-		   							? <span className="icon ion-md-pause"></span>
-		   							: null }	
-		   							{index+1}.</td> 
+		   						{ !this.state.isMouseOver 
+		   							? index+1
+		   							: <span className="icon ion-md-play"></span> }
+		   						{ !this.state.isMouseOver && this.state.currentSong.isPlaying
+		   							? index+1
+		   							: <span className="icon ion-md-pause"></span> }	
+		   							</td> 
 		   						<td>{this.state.album.songs[index].title}</td> 
 		   						<td>{this.state.album.songs[index].duration} seconds</td>
 		   					</tr>	
