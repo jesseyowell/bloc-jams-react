@@ -16,6 +16,7 @@ class Album extends Component {
 			album: album,
 			currentSong: album.songs[0],
 			currentTime: 0,
+			currentVolume: 0.80,
 			duration: album.songs[0].duration,
 			isPlaying: false,
 			isMouseOver: null
@@ -32,16 +33,21 @@ class Album extends Component {
 			},
 			durationchange: e => {
 				this.setState({ durationchange: this.audioElement.duration });
+			},
+			volumechange: e => {
+				this.setState({ volumechange: this.audioElement.volumechange });
 			}
 		};
 		this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
 		this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
+		this.audioElement.addEventListener('volumechange', this.eventListeners.volumechange);
 	}
 
 	componentWillUnmount() {
 		this.audioElement.src = null;
 		this.audioElement.removeEventListener('timeupdate',this.eventListeners.timeupdate);
 		this.audioElement.removeEventListener('durationchange',this.eventListeners.durationchange);
+		this.audioElement.removeEventListener('volumechange', this.eventListeners.volumechange);
 	}
 
 	play() {
@@ -90,6 +96,34 @@ class Album extends Component {
 		const newTime = this.audioElement.duration * e.target.value;
 		this.audioElement.currentTime = newTime;
 		this.setState({ currentTime: newTime });
+	}
+
+	handleVolumeChange(e) {
+		const newVolume = e.target.value;
+		this.audioElement.volume = newVolume;
+		this.setState({ currentVolume: newVolume });
+	}
+
+	formatTime(seconds) {
+
+		const minuteField = Math.floor(seconds / 60);
+		const secondField = Math.floor(seconds - (minuteField * 60));
+			
+		if (isNaN(seconds) || seconds === undefined) {
+			return `-:--`;
+		}
+
+		else if(secondField < 10) {
+			return `${minuteField}:0${secondField}`;
+        }
+
+        else if (secondField % 60 === 0) {
+        	return `${minuteField}:00`;
+        }
+		
+		else {
+			return `${minuteField}:${secondField}`;	
+		}		
 	}
 
 	mouseHover(song) {
@@ -144,7 +178,7 @@ class Album extends Component {
 		   						<td onMouseEnter={ () => this.mouseHover(song) } onMouseLeave={ () => this.mouseLeave() }>
 		   						{ this.renderButton(song,index) }</td>
 		   						<td>{this.state.album.songs[index].title}</td> 
-		   						<td>{this.state.album.songs[index].duration} seconds</td>
+		   						<td>{this.formatTime(this.state.album.songs[index].duration)}</td>
 		   					</tr>	
 
 		   					);
@@ -161,6 +195,8 @@ class Album extends Component {
 		   			handlePrevClick={ () => this.handlePrevClick() }
 		   			handleNextClick={ () => this.handleNextClick() } 
 		   			handleTimeChange={ (e) => this.handleTimeChange(e) }
+		   			handleVolumeChange={ (e) => this.handleVolumeChange(e) }
+		   			formatTime={ (seconds) => this.formatTime(seconds) } 
 		   		/>
 		   	</section>		
 	);	
