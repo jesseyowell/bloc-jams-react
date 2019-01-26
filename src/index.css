@@ -12,3 +12,196 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.hero-title {
+	font-family: Roboto;
+	color: #A13064;
+	background: #000020;
+}
+
+.nav-container {
+	display:flex;
+	justify-content: center;
+}
+
+.landing-link {
+	/* Landing / Library */
+width: 200px;
+align-content: center;
+font-family: CircularPro-Medium, Roboto;
+font-size: 36px;
+color: #A13064;
+}
+
+.library-link {
+	/* Landing / Library */
+align-content: center;
+font-family: CircularPro-Medium, Roboto;
+font-size: 36px;
+color: #A13064;
+}
+
+a:hover {
+	color: #FFEECC;
+	text-decoration: none;
+}
+
+.BlocJams {
+	/* Bloc Jams: */
+text-shadow: -5px 0 #A13064, 0 5px #A13064, 5px 0 #A13064, 0 -5px #A13064;
+font-family: Outage-Regular;
+font-size: 122px;
+color: #000020;
+background: #262623;
+}
+
+/* Landing page ******************************************************/
+/* ************ */
+
+.landing {
+/* organization comes here, for entire page */
+
+}
+
+
+.selling-points {
+/* photo BG: */
+background: #A9ACAD;
+border: 1px solid #000020;
+}
+
+.point {
+
+}
+
+.point-title {
+/* Choose your music: */
+font-family: CircularPro-Black, Roboto;
+padding: 0 100px 0 0;
+font-size: 30px;
+color: #000020;
+}
+
+.point-description {
+	/* The world is full of: */
+font-family: 'Cabin', sans-serif;
+padding: 0 100px 0 0;
+font-size: 24px;
+color: #000020;
+}
+
+/* Library page *********************************************************/
+/* ************ */
+
+.library {
+display: flex;
+align-items: center;
+flex-direction: column;
+}
+
+.library img {
+flex: 0;
+padding: 10px;
+}
+
+.albumList-title {
+flex-grow: 0;
+flex-shrink: 0;
+font-size: 24px;
+font-family: CircularPro-Medium, Roboto;
+color: #000020;
+}
+
+.albumList-artist {
+flex-grow: 0;
+flex-shrink: 0;
+font-size: 24px;
+font-family: CircularPro-Medium, Roboto;
+color: #000020;
+}
+
+.albumList-songs {
+flex-grow: 0;
+flex-shrink: 0;
+font-size: 24px;
+font-family: CircularPro-Medium, Roboto;
+color: #000020;
+}
+
+/* Album page ****************************************************************/
+/* ********** */
+
+.album {
+	display: flex;
+}
+
+#album-info img {
+	margin-left: 350px;
+	justify-content: center;
+	align-items: center;
+}
+
+.album-details {
+	margin-left: 350px;
+	display: flex;
+	flex-flow: column;
+	background: #FFEECC;
+}
+
+#album-title {
+	font-family: CircularPro-Medium, Roboto;
+	color: #000020;
+}
+
+.artist {
+	flex: 0;
+	justify-content: center;
+	font-family: CircularPro-Medium, Roboto;
+    color: #000020;
+} 
+
+#release-info {
+	font-family: CircularPro-Medium, Roboto;
+	color: #000020;
+	font-size:20px;
+}
+
+#song-list {
+	display: flex;
+	font-size: 30px;
+	font-family: CircularPro-Medium, Roboto;
+	align-items: center;
+	justify-content: center;
+	flex-flow: column;
+	padding-left: 50px;
+	padding-bottom: 100px;
+	background: #FFEECC;
+}
+
+#song-number-column {
+	font-family: CircularPro-Medium, Roboto;
+	font-size:30px
+}
+
+#song-title-column {
+	font-family: CircularPro-Medium, Roboto;
+	font-size:30px
+}
+
+#song-duration-column {
+	font-family: CircularPro-Medium, Roboto;
+	font-size:30px
+}
+
+.player-bar {
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	flex-flow: column;
+	padding-left: 50px;
+	padding-bottom: 100px;
+	background: #FFEECC;
+}
+
+
+
