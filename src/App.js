@@ -15,7 +15,7 @@ class App extends Component {
           <h1 className='BlocJams'>Bloc Jams</h1>
         </header> 
         <nav className="nav-container">
-          <Link to='/' className='landing-link'>Landing</Link>
+          <Link to='/' className='landing-link'>Home</Link>
           <Link to='/library' className='library-link'>Library</Link>
         </nav>  
       <main>

@@ -71,13 +71,19 @@ border: 1px solid #000020;
 }
 
 .point {
+display: flex;
+align-items: center;
+}
 
+.point img {
+flex-shrink: 0;
+flex-grow: 0;
 }
 
 .point-title {
 /* Choose your music: */
+flex: 50%;
 font-family: CircularPro-Black, Roboto;
-padding: 0 100px 0 0;
 font-size: 30px;
 color: #000020;
 }
@@ -85,7 +91,6 @@ color: #000020;
 .point-description {
 	/* The world is full of: */
 font-family: 'Cabin', sans-serif;
-padding: 0 100px 0 0;
 font-size: 24px;
 color: #000020;
 }
